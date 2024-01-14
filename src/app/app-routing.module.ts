@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,17 +20,19 @@ const routes: Routes = [
   {
     path:'home',
     title:'Home',
-    component:HomeComponent
-  },
-  {
-    path:'',
-    redirectTo:'home',
-    pathMatch:'full'
+    component:HomeComponent,
+    canActivate:[authGuard]
   },
   // {
-  //   path:'**',
-  //   component:PageNotFoundComponent
-  // }
+  //   path:'',
+  //   redirectTo:'home',
+  //   pathMatch:'full',
+
+  // },
+  {
+    path:'**',
+    component:PageNotFoundComponent
+  }
 ];
 
 @NgModule({
