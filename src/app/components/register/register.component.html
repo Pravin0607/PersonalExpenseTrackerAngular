@@ -1,7 +1,7 @@
 <form [formGroup]="registerForm" class="flex min-h-30rem justify-content-center align-items-center" (ngSubmit)="submitDetails()">
-    <p-card header="Register From" [style]="{ width: '800px',}">
+    <p-card header="Register From"  [style]="{ width: '360px',}" styleClass="md:w-12">
 
-        <div class="flex gap-4">
+        <div class="md:flex md:gap-4">
         <div class="field">
             <label for="firstName">First Name  </label>
             <input type="text" class="w-full" pInputText name="firstName" formControlName="firstName" placeholder="Enter Your First Name" maxlength="20"/>
