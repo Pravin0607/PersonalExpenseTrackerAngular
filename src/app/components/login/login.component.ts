@@ -29,7 +29,7 @@ export class LoginComponent {
       (response) => {
         if(response.length > 0 && response[0].password===password)
         {
-          this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User loged in Successfuly.' });
+          this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User loged in Successfully.' });
           sessionStorage.setItem('email',email as string);
           this.router.navigate(["/home"])
         }

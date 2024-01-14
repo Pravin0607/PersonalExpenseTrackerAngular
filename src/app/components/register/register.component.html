@@ -1,6 +1,7 @@
 <form [formGroup]="registerForm" class="flex min-h-30rem justify-content-center align-items-center" (ngSubmit)="submitDetails()">
-    <p-card header="Register From" [style]="{ width: '360px'}">
+    <p-card header="Register From" [style]="{ width: '800px',}">
 
+        <div class="flex gap-4">
         <div class="field">
             <label for="firstName">First Name  </label>
             <input type="text" class="w-full" pInputText name="firstName" formControlName="firstName" placeholder="Enter Your First Name" maxlength="20"/>
@@ -20,6 +21,7 @@
                 </div>
             </small>
         </div>
+    </div>
 
         <div class="field">
             <label for="email">Email</label>
@@ -33,6 +35,7 @@
                 </div>
             </small>
         </div>
+
 
         <div class="field">
             <label for="password">Password  </label>
@@ -48,7 +51,7 @@
 
         <div class="field">
             <label for="confirmPassword">Confirm Password </label>
-            <input type="confirmPassword" class="w-full" pInputText name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password"/>
+            <input type="Password" class="w-full" pInputText name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password"/>
 
             <small *ngIf="confirmPassword.invalid && ( confirmPassword.dirty || confirmPassword.touched)" class="block p-error">
 
@@ -62,7 +65,7 @@
                 password should match.
             </small>
             
-        </div>
+    </div>
         <p-button label="Register" type="submit" styleClass="w-full" [disabled]="registerForm.invalid"></p-button>
         
         <div class="mt-3">

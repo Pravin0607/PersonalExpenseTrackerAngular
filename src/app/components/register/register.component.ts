@@ -47,7 +47,7 @@ export class RegisterComponent {
     console.log(postdata);
     this.authService.registerUser(postdata as User).subscribe(
       (response) => {
-        this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User Registered Success Fully.' });
+        this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User Registered Successfully.' });
         this.router.navigate(['/login'])
       },
       (err) => {
