@@ -16,6 +16,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebarModule } from 'primeng/sidebar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     InputTextModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
+    SidebarModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

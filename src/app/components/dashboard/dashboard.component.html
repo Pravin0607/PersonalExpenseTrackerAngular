@@ -1,4 +1,25 @@
 <div>
-    <p>DashBoard</p>
-    <p-button (onClick)="logOut()">Log Out</p-button>
+    <div class="card flex ">
+        <p-sidebar [(visible)]="sidebarVisible" styleClass="bg-purple-200" styleClass="w-15rem">
+            <ng-template pTemplate="header">
+                    <h3>Menu</h3>
+            </ng-template>
+            <ng-template pTemplate="body">
+                <div class="flex w-full flex-column gap-2">
+                    <p-button label="Dashboard" styleClass="w-full"></p-button>
+                    <p-button label="Expense" styleClass="w-full"></p-button>
+                    <p-button label="Category" styleClass="w-full"></p-button>
+                    <p-button label="Report" styleClass="w-full"></p-button>
+                    <p-button label="Profile" styleClass="w-full"></p-button>
+                </div>
+                </ng-template>
+
+            <ng-template pTemplate="footer">
+                <p-button (onClick)="logOut()" severity="danger" >Log Out</p-button>
+            </ng-template>
+        </p-sidebar>
+        <p-button (click)="sidebarVisible = true" label="Navbar" icon="pi pi-th-large"></p-button>
+    </div>
+    <h3 style="text-align: center;">Welcome {{user}}</h3>
+
 </div>

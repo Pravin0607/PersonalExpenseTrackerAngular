@@ -7,8 +7,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
 
-  user:string='';
-
+  user:string='unknown';
+  sidebarVisible:boolean=false;
+  
   constructor(private router:Router){}
   ngOnInit(): void {
   this.user=sessionStorage.getItem('email') as string;    
