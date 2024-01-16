@@ -5,6 +5,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { authGuard } from './guards/auth.guard';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,9 @@ const routes: Routes = [
   },
   {
     path:'home',
-    title:'Home',
-    component:HomeComponent,
+    title:'Dashboard',
+    // component:HomeComponent,
+    component:DashboardComponent,
     canActivate:[authGuard]
   },
   // {
@@ -29,6 +32,11 @@ const routes: Routes = [
   //   pathMatch:'full',
 
   // },
+  {
+    path:'',
+    component:WelcomeComponent,
+    pathMatch:'full'
+  },
   {
     path:'**',
     component:PageNotFoundComponent

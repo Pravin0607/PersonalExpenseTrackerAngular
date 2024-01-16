@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import { MessageService } from 'primeng/api';
     RegisterComponent,
     HomeComponent,
     PageNotFoundComponent,
+    WelcomeComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
