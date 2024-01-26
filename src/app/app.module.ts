@@ -17,6 +17,12 @@ import { MessageService } from 'primeng/api';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarModule } from 'primeng/sidebar';
+import { StoreModule } from '@ngrx/store';
+import { DashboardhomeComponent } from './components/dashboardhome/dashboardhome.component';
+import { ExpenseComponent } from './components/expense/expense.component';
+import { CategoryComponent } from './components/category/category.component';
+import { ReportComponent } from './components/report/report.component';
+import { ProfileComponent } from './components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +32,11 @@ import { SidebarModule } from 'primeng/sidebar';
     PageNotFoundComponent,
     WelcomeComponent,
     DashboardComponent,
+    DashboardhomeComponent,
+    ExpenseComponent,
+    CategoryComponent,
+    ReportComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +48,8 @@ import { SidebarModule } from 'primeng/sidebar';
     ReactiveFormsModule,
     HttpClientModule,
     ToastModule,
-    SidebarModule
+    SidebarModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

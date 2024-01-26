@@ -31,6 +31,7 @@ export class LoginComponent {
         {
           this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User loged in Successfully.' });
           sessionStorage.setItem('email',email as string);
+          sessionStorage.setItem('isLogged',"true");
           this.router.navigate(["/home"])
         }
         else

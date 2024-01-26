@@ -5,14 +5,13 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
-  user:string='unknown';
   sidebarVisible:boolean=false;
   
   constructor(private router:Router){}
   ngOnInit(): void {
-  this.user=sessionStorage.getItem('email') as string;    
+
   }
 logOut()
 {
