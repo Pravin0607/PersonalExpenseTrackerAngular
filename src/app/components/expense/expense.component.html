@@ -26,9 +26,6 @@
     </p-card>
 
     <p-card subheader="Expenses">
-
-
-
         <p-table [value]="expenses" dataKey="id" [scrollable]="true" scrollHeight="290px" [tableStyle]="{'width': '100%'}" styleClass="p-datatable-striped p-datatable-sm">
 
             <ng-template pTemplate="header">
@@ -40,6 +37,7 @@
                     <th style="width:20%">Actions</th>
                 </tr>
             </ng-template>
+
             <ng-template pTemplate="body">
                 <tr>
                     <td>1</td>
