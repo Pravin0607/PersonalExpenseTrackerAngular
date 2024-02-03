@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNotFoundComponent } from './page-not-found.component';
+import { EditexpenseComponent } from './editexpense.component';
 
-describe('PageNotFoundComponent', () => {
-  let component: PageNotFoundComponent;
-  let fixture: ComponentFixture<PageNotFoundComponent>;
+describe('EditexpenseComponent', () => {
+  let component: EditexpenseComponent;
+  let fixture: ComponentFixture<EditexpenseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageNotFoundComponent]
+      declarations: [EditexpenseComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PageNotFoundComponent);
+    fixture = TestBed.createComponent(EditexpenseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

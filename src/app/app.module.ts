@@ -23,6 +23,14 @@ import { ExpenseComponent } from './components/expense/expense.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ChartModule } from 'primeng/chart';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
+import { DialogModule } from 'primeng/dialog';
+import { EditexpenseComponent } from './components/editexpense/editexpense.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +45,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     CategoryComponent,
     ReportComponent,
     ProfileComponent,
+    EditexpenseComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +58,13 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     ToastModule,
     SidebarModule,
+    ChartModule,
+    InputTextModule,
+    InputNumberModule,
+    CalendarModule,
+    DropdownModule,
+    TableModule,
+    DialogModule,
     StoreModule.forRoot({}, {})
   ],
   providers: [MessageService],
