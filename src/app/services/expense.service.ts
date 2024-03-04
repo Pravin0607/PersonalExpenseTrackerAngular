@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ExpenseService {
-private baseUrl:string="http://localhost:8000/api/expense";
+private baseUrl:string="http://localhost:8001/api/expense";
   constructor(private http:HttpClient) { }
 
   getExpenses(){

@@ -3,6 +3,7 @@ import { User } from '../../interfaces/auth';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../../shared/password-match.directive';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit{
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
+      phoneNo: ['', Validators.required],
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required],
     },
@@ -25,21 +27,63 @@ export class ProfileComponent implements OnInit{
   );
 
   userData:Partial<User>={};
-  constructor(private user:UserService,private fb:FormBuilder){}
+  constructor(private user:UserService,private fb:FormBuilder,private msgService:MessageService){}
 
   ngOnInit(): void {
       this.userData=this.user.data;
       this.userData.email=sessionStorage.getItem('email') as string;
-
-      this.updateForm.patchValue({
-        firstName: this.userData.firstName,
-        lastName: this.userData.lastName,
-        email: this.userData.email,
-        password: '',  // You can choose to assign a default value or leave it empty
-        confirmPassword: '',  // You can choose to assign a default value or leave it empty
-      });
+      this.getUserDetails()
   }
 
+updateUser(){
+  
+  this.user.updateUser(this.updateForm.value).subscribe(
+    (data:{success?:boolean,message?:string})=>{
+      if(data.success)
+      {
+        this.msgService.add({key:"bc",severity:'success',summary:'Success',detail:data.message as string})
+      }
+      else
+      {
+        this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:data.message as string})
+      }
+    }
+  ,(error)=>{
+    console.log(error)
+    this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:'Error in updating user details.'})
+  }
+  );
+}
+
+getUserDetails()
+{
+  this.user.getUser().subscribe(
+    (data:{success?:boolean,data?:{firstName:string,lastName:string,phoneNo:string,email:string}})=>{
+      console.log(data);
+      if(data.success)
+      {
+        this.updateForm.patchValue({
+          firstName: data.data?.firstName,
+          lastName: data.data?.lastName,
+          email: data.data?.email,
+          phoneNo: data.data?.phoneNo,
+        });
+      }
+      else
+      {
+        this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:'Error in fetching user details'})
+      }
+    }
+  ,(error)=>{console.log(error);
+  this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:'Error in fetching user details'})
+  }
+  );
+
+}
+
+get phoneNo() {
+    return this.updateForm.controls["phoneNo"];
+  }
 
   get firstName() {
     return this.updateForm.controls["firstName"];

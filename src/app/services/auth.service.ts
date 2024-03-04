@@ -7,7 +7,7 @@ import { User } from '../interfaces/auth';
 })
 
 export class AuthService {
-  private baseUrl='http://localhost:8000/api/user/'
+  private baseUrl='http://localhost:8001/api/user/'
   constructor(private http:HttpClient) { }
 
   registerUser(userDetails:User)
