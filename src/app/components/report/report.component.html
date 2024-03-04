@@ -1,3 +1,9 @@
-<div>
-    <h3 align="center">Reports</h3>
-</div>
+<p-card header="Reports" styleClass="text-center">
+    <p-tabView>
+        <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title">
+            <p class="bg-red-300">
+                {{ tab.content }}
+            </p>
+        </p-tabPanel>
+        </p-tabView>
+</p-card>

@@ -18,6 +18,7 @@ export class RegisterComponent {
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
       confirmPassword: ["", Validators.required],
+      phoneNo:["",Validators.required],
     },
     {
       validators: passwordMatchValidator,
@@ -26,6 +27,9 @@ export class RegisterComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService,private messageService:MessageService,private router:Router) {}
 
+  get phoneNo() {
+    return this.registerForm.controls["phoneNo"];
+  }
   get firstName() {
     return this.registerForm.controls["firstName"];
   }
@@ -44,14 +48,22 @@ export class RegisterComponent {
   submitDetails() {
     let postdata = { ...this.registerForm.value };
     delete postdata.confirmPassword;
-    console.log(postdata);
+    // console.log(postdata);
     this.authService.registerUser(postdata as User).subscribe(
-      (response) => {
-        this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User Registered Successfully.' });
-        this.router.navigate(['/login'])
+      (response:{success?:boolean}) => {
+        const success=response?.success;
+        if(success)
+        {
+          this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User Registered Successfully.' });
+          this.router.navigate(['/login'])
+        }
+        else
+        {
+          this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'User Already Exists.' }); 
+        }
       },
       (err) => {
-        this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'Failed To Register User.' }); 
+        this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'User Already Exists.' }); 
       }
     );
   }

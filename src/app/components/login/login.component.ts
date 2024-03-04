@@ -15,7 +15,12 @@ export class LoginComponent {
     password: ["", Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService,private router:Router,private messageService:MessageService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   get email() {
     return this.loginForm.controls["email"];
@@ -23,26 +28,39 @@ export class LoginComponent {
   get password() {
     return this.loginForm.controls["password"];
   }
+
   loginUser() {
     const { email, password } = this.loginForm.value;
-    return this.authService.getUserByEmail(email as string).subscribe(
-      (response) => {
-        if(response.length > 0 && response[0].password===password)
-        {
-          this.messageService.add({ key: 'bc', severity: 'success', summary: 'Success', detail: 'User loged in Successfully.' });
-          sessionStorage.setItem('email',email as string);
-          sessionStorage.setItem('isLogged',"true");
-          this.router.navigate(["/home"])
+    if (email && password) {
+      this.authService.loginUser({ email, password }).subscribe(
+        (response: any) => {
+          this.messageService.add({
+            key: "bc",
+            severity: "success",
+            summary: "Success",
+            detail: "User logged in Successfully.",
+          });
+          sessionStorage.setItem("email", email);
+          sessionStorage.setItem("isLogged", "true");
+          sessionStorage.setItem("token", response.data.token);
+          this.router.navigate(["/home"]);
+        },
+        (err) => {
+          this.messageService.add({
+            key: "bc",
+            severity: "error",
+            summary: "Failure",
+            detail: "Invalid Password or Email.",
+          });
         }
-        else
-        {
-          this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'Invalid Password or Email.' });
-        }
-      },
-
-      (err) => {
-        this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'Something Went Wrong.' });
-      }
-    );
+      );
+    } else {
+      this.messageService.add({
+        key: "bc",
+        severity: "error",
+        summary: "Failure",
+        detail: "Enter Valid Password or Email.",
+      });
+    }
   }
 }

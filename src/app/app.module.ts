@@ -30,6 +30,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { EditexpenseComponent } from './components/editexpense/editexpense.component';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { EditexpenseComponent } from './components/editexpense/editexpense.compo
     DropdownModule,
     TableModule,
     DialogModule,
+    TabViewModule,
     StoreModule.forRoot({}, {})
   ],
   providers: [MessageService],

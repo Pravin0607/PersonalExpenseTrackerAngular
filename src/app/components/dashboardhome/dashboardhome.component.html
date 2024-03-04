@@ -27,18 +27,23 @@
     </div>
 
     <hr>
-    
-        <div class="flex gap-4 align-items-end md:flex-row flex-column">
-            <div class="w-full flex-1">
-                <p-card styleClass="border-solid flex flex-1 justify-content-center" header="Category Wise">
+
+    <div class="flex gap-4 mb-2 justify-content-center">
+        <div class="flex-1">
+            <p-card header="Category Wise"  styleClass="border-solid h-full flex flex-1 justify-content-center">
+                <ng-template pTemplate="content">
                     <p-chart type="pie" [data]="data" [options]="options"></p-chart>
-                </p-card>
-            </div>
-            <div class="w-full flex-1 h-full">
-                <p-card styleClass="border-solid flex flex-1 justify-content-center" subheader="This Year MonthWise">
-                    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
-                </p-card>
-            </div>
+                </ng-template>
+            </p-card>
         </div>
+
+        <div class="flex-1">
+            <p-card header="This Year" styleClass="border-solid h-full flex flex-1 justify-content-center align-content-end">
+                <ng-template pTemplate="content">
+                    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
 </p-card>
 

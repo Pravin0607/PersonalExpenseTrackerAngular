@@ -1,5 +1,5 @@
 <form [formGroup]="registerForm" class="flex min-h-30rem justify-content-center align-items-center" (ngSubmit)="submitDetails()">
-    <p-card header="Register From"  [style]="{ width: '360px',}" styleClass="md:w-12">
+    <p-card header="Registration Form"  [style]="{ width: '360px',}" styleClass="md:w-12">
 
         <div class="md:flex md:gap-4">
         <div class="field">
@@ -21,6 +21,7 @@
                 </div>
             </small>
         </div>
+
     </div>
 
         <div class="field">
@@ -35,6 +36,20 @@
                 </div>
             </small>
         </div>
+
+        <div class="field">
+            <label for="phoneNo">Phone No </label>
+            <input type="phoneNo" class="w-full" pInputText name="phoneNo" formControlName="phoneNo" placeholder="Enter Your Phone Number"/>
+            <small *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)" class="p-error">
+                <div *ngIf="phoneNo.errors?.['phoneNo']">
+                    Enter valid phone Number.
+                </div>
+                <div *ngIf="phoneNo.errors?.['required']">
+                    phoneNo is Required.
+                </div>
+            </small>
+        </div>
+
 
 
         <div class="field">

@@ -21,10 +21,10 @@ export class DashboardhomeComponent implements OnInit {
 
 
     this.data={
-        labels: ['A', 'B', 'C'],
+        labels: ['A', 'B', 'C','D'],
         datasets: [
             {
-                data: [540, 325, 702],
+                data: [540, 325, 702,500],
             }
         ]
     };
