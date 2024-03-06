@@ -3,13 +3,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ReportsService } from '../../../../services/reports.service';
 
 @Component({
-  selector: 'app-daywise',
-  templateUrl: './daywise.component.html',
-  styleUrl: './daywise.component.css'
+  selector: 'app-monthwise',
+  templateUrl: './monthwise.component.html',
+  styleUrl: './monthwise.component.css'
 })
-export class DaywiseComponent {
-  dayForm=this.fb.group({
-    date:['',[Validators.required]]
+export class MonthwiseComponent {
+
+  monthForm = this.fb.group({
+    month: ['',Validators.required],
   });
 
   labels:string[]=[];
@@ -17,12 +18,11 @@ export class DaywiseComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
-  constructor(private fb:FormBuilder,private reportService:ReportsService) { }
+  constructor(private fb:FormBuilder,private reportService:ReportsService){}
 
-  showReport()
-  {
-    // console.log("from daywise : ",this.dayForm.value);
-    this.reportService.getDayWiseReport(this.dayForm.value.date).subscribe(
+  showReport(){
+    console.log(this.monthForm.value.month);
+    this.reportService.getMonthWiseReport(this.monthForm.value.month).subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
       {
       console.log(response);
@@ -48,6 +48,6 @@ export class DaywiseComponent {
     },(error)=>{
       console.log(error);
     });
-  }
+}
 
 }
