@@ -31,6 +31,11 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { EditexpenseComponent } from './components/editexpense/editexpense.component';
 import { TabViewModule } from 'primeng/tabview';
+import { DaywiseComponent } from './components/report/subreports/daywise/daywise.component';
+import { MonthwiseComponent } from './components/report/subreports/monthwise/monthwise.component';
+import { YearwiseComponent } from './components/report/subreports/yearwise/yearwise.component';
+import { BetweenDatesComponent } from './components/report/subreports/between-dates/between-dates.component';
+import { PiechartComponent } from './components/piechart/piechart.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { TabViewModule } from 'primeng/tabview';
     ReportComponent,
     ProfileComponent,
     EditexpenseComponent,
+    DaywiseComponent,
+    MonthwiseComponent,
+    YearwiseComponent,
+    BetweenDatesComponent,
+    PiechartComponent,
   ],
   imports: [
     BrowserModule,

@@ -67,6 +67,7 @@ loadAllExpenses() {
   this.expenseService.getExpenses().subscribe(
     (data: any) => {
       this.expenses = data.data;
+      console.log("get all data ", data.data)
     },
     (error: any) => {
       console.log("get all error ", error);
@@ -74,6 +75,7 @@ loadAllExpenses() {
   );
 }
   addExpense() {
+    // console.log(this.expenseform.value.date);
     this.expenseService.addExpense(this.expenseform.value).subscribe(
       (data: { success?: boolean, message?: string, data?: {} }) => {
         if (data.success) {

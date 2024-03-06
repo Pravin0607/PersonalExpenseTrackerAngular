@@ -14,6 +14,7 @@ private baseUrl:string="http://localhost:8001/api/expense";
 
   addExpense(expense:any){
     // console.log("from service",expense)
+    // console.log("from the add exp service : ",expense);
     return this.http.post(`${this.baseUrl}/add`,expense,{headers:{'token':`${sessionStorage.getItem('token')}`}});
   }
 
