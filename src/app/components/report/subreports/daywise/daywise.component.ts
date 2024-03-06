@@ -25,7 +25,7 @@ export class DaywiseComponent {
     this.reportService.getDayWiseReport(this.dayForm.value.date).subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
       {
-      console.log(response);
+      // console.log(response);
       if(response.success)
       {
           if(response.data)
@@ -41,7 +41,7 @@ export class DaywiseComponent {
       }
       else
       {
-        console.log("No data found");
+        // console.log("No data found");
         
         this.isDataAvailable=false;
       }

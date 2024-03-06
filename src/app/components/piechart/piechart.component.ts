@@ -42,8 +42,8 @@ ngOnChanges(changes: SimpleChanges) {
     }
   };
 
-  console.log("table data = ",this.tableData);
-  console.log("component rendered");
+  // console.log("table data = ",this.tableData);
+  // console.log("component rendered");
 }
 
 

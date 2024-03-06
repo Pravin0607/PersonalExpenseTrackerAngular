@@ -22,6 +22,10 @@ export class ReportsService {
     return this.http.post(this.baseUrl+'year/',{year},{headers:{'token':`${sessionStorage.getItem('token')}`}});
   }
 
+  getBetweenDatesReport(dates:any){
+    return this.http.post(this.baseUrl+'rangedate/',{dates},{headers:{'token':`${sessionStorage.getItem('token')}`}});
+  }
+
   structureData(response:{categoryReport:{}[],expenses:{}[]})
   {
 

@@ -20,11 +20,11 @@ export class YearwiseComponent {
     constructor(private fb:FormBuilder,private reportService:ReportsService){}
 
     showReport(){
-      console.log(this.yearForm.value);
+      // console.log(this.yearForm.value);
       this.reportService.getYearWiseReport(this.yearForm.value.year).subscribe(
         (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
         {
-        console.log(response);
+        // console.log(response);
         if(response.success)
         {
             if(response.data)
@@ -40,7 +40,7 @@ export class YearwiseComponent {
         }
         else
         {
-          console.log("No data found");
+          // console.log("No data found");
           
           this.isDataAvailable=false;
         }

@@ -3,14 +3,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ReportsService } from '../../../../services/reports.service';
 
 @Component({
-  selector: 'app-monthwise',
-  templateUrl: './monthwise.component.html',
-  styleUrl: './monthwise.component.css'
+  selector: 'app-between-dates',
+  templateUrl: './between-dates.component.html',
+  styleUrl: './between-dates.component.css'
 })
-export class MonthwiseComponent {
-
-  monthForm = this.fb.group({
-    month: ['',Validators.required],
+export class BetweenDatesComponent {
+  dateRangeForm=this.fb.group({
+    rangeDates:['',Validators.required]
   });
 
   labels:string[]=[];
@@ -18,11 +17,13 @@ export class MonthwiseComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
-  constructor(private fb:FormBuilder,private reportService:ReportsService){}
+
+  constructor(private fb:FormBuilder,private reportService:ReportsService) { }
 
   showReport(){
-    // console.log(this.monthForm.value.month);
-    this.reportService.getMonthWiseReport(this.monthForm.value.month).subscribe(
+    // console.log(this.dateRangeForm.value.rangeDates);
+    this.reportService.getBetweenDatesReport(this.dateRangeForm.value.rangeDates)
+    .subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
       {
       // console.log(response);
@@ -48,6 +49,5 @@ export class MonthwiseComponent {
     },(error)=>{
       console.log(error);
     });
-}
-
+  }
 }
