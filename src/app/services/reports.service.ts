@@ -26,6 +26,11 @@ export class ReportsService {
     return this.http.post(this.baseUrl+'rangedate/',{dates},{headers:{'token':`${sessionStorage.getItem('token')}`}});
   }
 
+  getSummaryReport(){
+    console.log("getting summary report")
+    return this.http.get(this.baseUrl+'summary/',{headers:{'token':`${sessionStorage.getItem('token')}`}});
+  }
+
   structureData(response:{categoryReport:{}[],expenses:{}[]})
   {
 
