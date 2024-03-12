@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/auth';
 import { HttpClient } from '@angular/common/http';
+import { DB_URL } from './constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl="http://localhost:8001/api/user/"
+  // baseUrl="http://localhost:8001/api/user/"
+  baseUrl=`${DB_URL}api/user/`;
   data:Partial<User>={};
   constructor(private http:HttpClient)
   { 

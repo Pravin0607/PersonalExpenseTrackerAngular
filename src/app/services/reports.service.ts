@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DB_URL } from './constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportsService {
 
-  baseUrl="http://localhost:8001/api/reports/";
+  // baseUrl="http://localhost:8001/api/reports/";
+  baseUrl=`${DB_URL}api/reports/`;
   constructor(private http:HttpClient) { }
 
   getDayWiseReport(date:any)

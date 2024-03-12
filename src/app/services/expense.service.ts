@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DB_URL } from './constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
-private baseUrl:string="http://localhost:8001/api/expense";
+// private baseUrl:string="http://localhost:8001/api/expense";
+private baseUrl:string=`${DB_URL}api/expense`;
   constructor(private http:HttpClient) { }
 
   getExpenses(){
