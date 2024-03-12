@@ -35,6 +35,8 @@ export class YearwiseComponent {
               this.dataset=dataset;
               this.expenses=expenses;
               this.isDataAvailable=true;
+              console.log("data received",response.data);
+              
             }
           }
         }
