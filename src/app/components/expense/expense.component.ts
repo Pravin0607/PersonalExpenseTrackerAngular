@@ -23,6 +23,7 @@ export class ExpenseComponent implements OnInit {
   expenseUpdateform: FormGroup = new FormGroup({});
   expenses: Expense[] = [];
 
+  isloading = false;
   constructor(
     private formbuilder: FormBuilder,
     private expenseService: ExpenseService,
@@ -74,8 +75,9 @@ loadAllExpenses() {
     }
   );
 }
-  addExpense() {
+  addExpense() {  
     // console.log(this.expenseform.value.date);
+    this.isloading = true;
     this.expenseService.addExpense(this.expenseform.value).subscribe(
       (data: { success?: boolean, message?: string, data?: {} }) => {
         if (data.success) {
@@ -95,6 +97,7 @@ loadAllExpenses() {
             detail: data.message,
           });
         }
+        this.isloading = false;
       },
       (error: any) => {
         this.msgService.add({
@@ -103,6 +106,7 @@ loadAllExpenses() {
           summary: "Error",
           detail: error.error.message,
         });
+        this.isloading = false;
       }
     );
   }

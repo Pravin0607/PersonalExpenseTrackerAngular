@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit{
       validators: passwordMatchValidator,
     }
   );
+  isloading:boolean=false;
 
   userData:Partial<User>={};
   constructor(private user:UserService,private fb:FormBuilder,private msgService:MessageService){}
@@ -36,7 +37,7 @@ export class ProfileComponent implements OnInit{
   }
 
 updateUser(){
-  
+  this.isloading=true;
   this.user.updateUser(this.updateForm.value).subscribe(
     (data:{success?:boolean,message?:string})=>{
       if(data.success)
@@ -47,6 +48,7 @@ updateUser(){
       {
         this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:data.message as string})
       }
+      this.isloading=false;
     }
   ,(error)=>{
     console.log(error)

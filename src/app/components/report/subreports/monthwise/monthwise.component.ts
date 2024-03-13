@@ -18,10 +18,12 @@ export class MonthwiseComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
+  isloading:boolean=false;
   constructor(private fb:FormBuilder,private reportService:ReportsService){}
 
   showReport(){
     // console.log(this.monthForm.value.month);
+    this.isloading=true;
     this.reportService.getMonthWiseReport(this.monthForm.value.month).subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
       {
@@ -45,8 +47,10 @@ export class MonthwiseComponent {
         
         this.isDataAvailable=false;
       }
+      this.isloading=false;
     },(error)=>{
       console.log(error);
+      this.isloading=false;
     });
 }
 

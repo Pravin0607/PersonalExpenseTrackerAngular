@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit{
   visible1:boolean=false;
   visible2:boolean=false;
 
+  isloading:boolean=false;
   categoryForm:FormGroup=this.fb.group({
     category: [''],
   });
@@ -42,6 +43,7 @@ export class CategoryComponent implements OnInit{
   }
 
   addCategory(){
+    this.isloading=true;
     if(this.categoryForm.value.category!=="")
     this.categoryService.addCategory(this.categoryForm.value.category).subscribe(
       (data: { success?: boolean, message?: string,data?:{categoryName:string,_id:string}} ) => {
@@ -58,10 +60,12 @@ export class CategoryComponent implements OnInit{
         {
           this.msgSerice.add({key:"bc", severity:'error',summary:'Error',detail:data.message});
         }
+        this.isloading=false;
       },
       (error) => {
         this.categoryForm.reset();
         this.msgSerice.add({key:"bc", severity:'error',summary:'Error',detail:error.error.message});
+        this.isloading=false;
       }
     )
   }

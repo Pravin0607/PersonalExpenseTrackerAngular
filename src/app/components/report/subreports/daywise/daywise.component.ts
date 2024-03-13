@@ -17,11 +17,14 @@ export class DaywiseComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
+  isloading:boolean=false;
+
   constructor(private fb:FormBuilder,private reportService:ReportsService) { }
 
   showReport()
   {
     // console.log("from daywise : ",this.dayForm.value);
+    this.isloading=true;
     this.reportService.getDayWiseReport(this.dayForm.value.date).subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
       {
@@ -45,8 +48,10 @@ export class DaywiseComponent {
         
         this.isDataAvailable=false;
       }
+      this.isloading=false;
     },(error)=>{
       console.log(error);
+      this.isloading=false;
     });
   }
 

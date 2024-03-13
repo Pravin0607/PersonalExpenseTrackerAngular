@@ -25,7 +25,7 @@
                 </small>
             </div>
 
-            <p-button label="Log In" type="submit" styleClass="w-full"></p-button>
+            <p-button label="Log In" type="submit" [loading]="isloading" styleClass="w-full"></p-button>
             
             <div class="mt-3">
                 Not a User? <a routerLink="/register">Register</a>.

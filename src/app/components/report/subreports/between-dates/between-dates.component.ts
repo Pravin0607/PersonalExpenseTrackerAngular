@@ -17,11 +17,14 @@ export class BetweenDatesComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
+  isloading:boolean=false;
+
 
   constructor(private fb:FormBuilder,private reportService:ReportsService) { }
 
   showReport(){
     // console.log(this.dateRangeForm.value.rangeDates);
+    this.isloading=true;
     this.reportService.getBetweenDatesReport(this.dateRangeForm.value.rangeDates)
     .subscribe(
       (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
@@ -46,8 +49,10 @@ export class BetweenDatesComponent {
         
         this.isDataAvailable=false;
       }
+      this.isloading=false;
     },(error)=>{
       console.log(error);
+      this.isloading=false;
     });
   }
 }

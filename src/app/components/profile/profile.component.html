@@ -78,6 +78,6 @@
                 </small>
                 
         </div>
-            <p-button label="Update Profile" type="submit" styleClass="w-full" [disabled]="updateForm.invalid" (onClick)="updateUser()"></p-button>
+            <p-button label="Update Profile" [loading]="isloading" type="submit" styleClass="w-full" [disabled]="updateForm.invalid" (onClick)="updateUser()"></p-button>
     </form>
 </p-card>

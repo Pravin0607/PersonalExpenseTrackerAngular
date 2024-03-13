@@ -21,7 +21,7 @@
                 <p-dropdown styleClass="w-full" formControlName="selectedCategory" [options]="categories" optionLabel="categoryName" placeholder="Select a Category" [required]="true"></p-dropdown>
             </div>
             <div>
-                <p-button label="Add Expense" type="submit" [disabled]="!expenseform.valid" styleClass="w-full"></p-button>
+                <p-button label="Add Expense" type="submit" [loading]="isloading" [disabled]="!expenseform.valid" styleClass="w-full"></p-button>
             </div>
         </div>        
     </p-card>

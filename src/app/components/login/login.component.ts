@@ -15,6 +15,7 @@ export class LoginComponent {
     password: ["", Validators.required],
   });
 
+  isloading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -30,6 +31,7 @@ export class LoginComponent {
   }
 
   loginUser() {
+    this.isloading = true;
     const { email, password } = this.loginForm.value;
     if (email && password) {
       this.authService.loginUser({ email, password }).subscribe(
@@ -44,6 +46,7 @@ export class LoginComponent {
           sessionStorage.setItem("isLogged", "true");
           sessionStorage.setItem("token", response.data.token);
           this.router.navigate(["/home"]);
+          this.isloading = false;
         },
         (err) => {
           this.messageService.add({
@@ -52,6 +55,7 @@ export class LoginComponent {
             summary: "Failure",
             detail: "Invalid Password or Email.",
           });
+          this.isloading = false;
         }
       );
     } else {
@@ -61,6 +65,7 @@ export class LoginComponent {
         summary: "Failure",
         detail: "Enter Valid Password or Email.",
       });
+    this.isloading = false;
     }
   }
 }

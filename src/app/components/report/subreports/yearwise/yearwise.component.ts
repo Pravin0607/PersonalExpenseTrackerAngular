@@ -17,10 +17,12 @@ export class YearwiseComponent {
   expenses:any;
   isDataAvailable:boolean=false;
 
+  isloading:boolean=false;
     constructor(private fb:FormBuilder,private reportService:ReportsService){}
 
     showReport(){
       // console.log(this.yearForm.value);
+      this.isloading=true;
       this.reportService.getYearWiseReport(this.yearForm.value.year).subscribe(
         (response:{success?:boolean,data?:{categoryReport:{}[],expenses:{}[]}})=>
         {
@@ -46,8 +48,10 @@ export class YearwiseComponent {
           
           this.isDataAvailable=false;
         }
+        this.isloading=false;
       },(error)=>{
         console.log(error);
+        this.isloading=false;
       });
     }
 

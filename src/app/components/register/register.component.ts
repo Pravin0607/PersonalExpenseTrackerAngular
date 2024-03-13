@@ -24,6 +24,7 @@ export class RegisterComponent {
       validators: passwordMatchValidator,
     }
   );
+  isloading:boolean=false;
 
   constructor(private fb: FormBuilder, private authService: AuthService,private messageService:MessageService,private router:Router) {}
 
@@ -46,6 +47,7 @@ export class RegisterComponent {
     return this.registerForm.controls["confirmPassword"];
   }
   submitDetails() {
+    this.isloading=true;
     let postdata = { ...this.registerForm.value };
     delete postdata.confirmPassword;
     // console.log(postdata);
@@ -61,9 +63,11 @@ export class RegisterComponent {
         {
           this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'User Already Exists.' }); 
         }
+        this.isloading=false;
       },
       (err) => {
         this.messageService.add({ key: 'bc', severity: 'error', summary: 'Failure', detail: 'User Already Exists.' }); 
+        this.isloading=false;
       }
     );
   }
