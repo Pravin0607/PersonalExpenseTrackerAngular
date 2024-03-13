@@ -33,7 +33,7 @@ export class CategoryComponent implements OnInit{
         if(res.data)
         {
           this.categories=res.data.map((category,index)=>{return {id:index+1,_id:category._id,category:category.categoryName}});
-          console.log(this.categories);
+          // console.log(this.categories);
         }
       },
       (error) => {
@@ -49,7 +49,7 @@ export class CategoryComponent implements OnInit{
       (data: { success?: boolean, message?: string,data?:{categoryName:string,_id:string}} ) => {
         this.categoryForm.reset();
         if (data.success) {
-          console.log(data);
+          // console.log(data);
           if(data.data)
           {
             this.categories.push({id:this.categories.length+1,_id:data.data._id,category:data.data.categoryName});

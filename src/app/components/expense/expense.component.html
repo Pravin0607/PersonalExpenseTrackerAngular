@@ -1,11 +1,8 @@
-<form [formGroup]="expenseform" class="w-full flex" (ngSubmit)="addExpense()">
 <div class="flex flex-1 flex-column gap-2">
     <p-card header="Expense Management" styleClass="text-center flex justify-content-center bg-purple-300">
-
+        <form [formGroup]="expenseform" class="w-full flex" (ngSubmit)="addExpense()">
         <div class="flex flex-column md:flex-row gap-2">
-
-            <div class="field align-items-center">
-                
+            <div class="field align-items-center">                
                 <input type="number" class="w-full" pInputText name="amount" formControlName="amount" placeholder="Enter Amount" required/>
             </div> 
                    
@@ -24,6 +21,8 @@
                 <p-button label="Add Expense" type="submit" [loading]="isloading" [disabled]="!expenseform.valid" styleClass="w-full"></p-button>
             </div>
         </div>        
+</form>
+
     </p-card>
     <p-card subheader="Expenses">
         <p-table [value]="expenses" dataKey="id" [scrollable]="true" scrollHeight="290px" [tableStyle]="{'width': '100%'}" styleClass="p-datatable-striped p-datatable-sm">
@@ -62,7 +61,6 @@
     </p-card>
 </div>
 
-</form>
 
 
 <!-- modals -->
