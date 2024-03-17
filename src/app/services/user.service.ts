@@ -12,7 +12,7 @@ export class UserService {
   data:Partial<User>={};
   constructor(private http:HttpClient)
   { 
-    this.data={id:101,firstName:'pravin',lastName:'Adhav',email:sessionStorage.getItem('email') as string,password:''};
+    // this.data={id:101,firstName:'pravin',lastName:'Adhav',email:sessionStorage.getItem('email') as string,password:''};
   };
 
   updateUser(user:any){
@@ -23,5 +23,7 @@ export class UserService {
   getUser(){
     return this.http.get(this.baseUrl,{headers:{'token':`${sessionStorage.getItem('token')}`}});
   }
-
+  deleteUser(){
+    return this.http.delete(this.baseUrl+'delete',{headers:{'token':`${sessionStorage.getItem('token')}`}});
+  }
 }

@@ -37,11 +37,11 @@ export class DashboardhomeComponent implements OnInit {
       }
   };
 
-  console.log("component loaded");
+  // console.log("component loaded");
 
   this.reportService.getSummaryReport()
   .subscribe((response:any)=>{
-    console.log("response received");
+    // console.log("response received");
     const {data}=response;
     const {amounts,categoryReporttill}=data;
 
@@ -75,7 +75,7 @@ export class DashboardhomeComponent implements OnInit {
         this.isDataAvailable=false;
     }
 
-    console.log(response);
+    // console.log(response);
   },(err)=>{
     console.log(err);
 });

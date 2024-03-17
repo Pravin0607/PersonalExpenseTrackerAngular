@@ -12,6 +12,9 @@ import { MessageService } from 'primeng/api';
 })
 export class ProfileComponent implements OnInit{
 
+  display:boolean=false;
+  deleteloading:boolean=false;
+
   updateForm = this.fb.group(
     {
       firstName: ["", Validators.required],
@@ -101,5 +104,36 @@ get phoneNo() {
   }
   get confirmPassword() {
     return this.updateForm.controls["confirmPassword"];
+  }
+  showModal()
+  {
+    this.display=true;
+  }
+  deleteUser()
+  {
+    this.deleteloading=true;
+    this.user.deleteUser().subscribe((response:{success?:boolean,message?:string})=>{
+      console.log(response);
+      if(response.success && response.message)
+      {
+        if(response.success)
+        {
+          this.msgService.add({key:"bc",severity:'success',summary:'Success',detail:response.message as string})
+          sessionStorage.clear();
+          window.location.href='/login';
+          console.log("User deleted successfully.")
+        }
+        else
+        {
+          this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:response.message as string})
+          console.log("Error in deleting user.")
+        }
+      }
+      this.deleteloading=false;
+    },(err)=>{
+      console.log(err);
+      this.msgService.add({key:"bc",severity:'error',summary:'Error',detail:'Error in deleting user.'})
+      this.deleteloading=false;
+    });
   }
 }

@@ -78,6 +78,27 @@
                 </small>
                 
         </div>
-            <p-button label="Update Profile" [loading]="isloading" type="submit" styleClass="w-full" [disabled]="updateForm.invalid" (onClick)="updateUser()"></p-button>
+        <div class="grid dir-col sm-dir-row">
+            <div class="col">
+                <p-button label="Delete Profile" [loading]="deleteloading" severity="danger" styleClass="w-full" (onClick)="showModal()"></p-button>
+            </div>
+            <div class="col">
+                <p-button label="Update Profile" [loading]="isloading" type="submit" styleClass="w-full" [disabled]="updateForm.invalid" (onClick)="updateUser()"></p-button>
+            </div>
+        </div>
+
     </form>
 </p-card>
+
+
+<!-- primeng modal for confirm user delete -->
+
+<p-dialog header="Delete Profile" [(visible)]="display" [modal]="true" [closable]="false" [responsive]="true" [style]="{maxWidth: '300px'}" [baseZIndex]="10000">
+    <p-footer>
+        <div class="flex justify-content-between">
+            <p-button label="Yes" severity="danger" icon="pi pi-check" (onClick)="deleteUser()" class="p-button-text"></p-button>
+            <p-button label="No" icon="pi pi-times" (onClick)="display=false" class="p-button-text"></p-button>
+        </div>
+    </p-footer>
+    <p>Are you sure you want to delete your profile?</p>
+</p-dialog>
